@@ -1,3 +1,4 @@
 FROM grimdog_systemd
-RUN dnf update --assumeyes; dnf clean all; systemctl enable jenkins.service
-RUN dnf jenkins
+RUN dnf install jenkins.service; dnf clean all; systemctl enable jenkins.service
+EXPOSE 80
+CMD["/usr/bin/init"]
