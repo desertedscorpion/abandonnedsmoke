@@ -1,0 +1,9 @@
+[Unit]
+Description=Initialize Jenkins Service
+After=jenkins.service
+
+[Service]
+ExecStart=/usr/local/sbin/bigneptune.sh
+
+[Install]
+WantedBy=multi-user.target
