@@ -1,6 +1,7 @@
 [Unit]
 Description=Initialize Jenkins Service
 After=jenkins.service
+Requires=jenkins.service
 
 [Service]
 ExecStart=/usr/local/sbin/bigneptune.sh
