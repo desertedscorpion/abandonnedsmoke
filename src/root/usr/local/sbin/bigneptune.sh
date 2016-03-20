@@ -11,5 +11,14 @@ cd $(mktemp -d) &&
 	    true
     done &&
     java hudson.cli.CLI -s http://localhost:8080 install-plugin greenballs &&
+    java hudson.cli.CLI -s http://localhost:8080 install-plugin jobConfigHistory &&
+    java hudson.cli.CLI -s http://localhost:8080 install-plugin ghprb &&
+    java hudson.cli.CLI -s http://localhost:8080 install-plugin gitlab-plugin &&
+    java hudson.cli.CLI -s http://localhost:8080 install-plugin github &&
+    java hudson.cli.CLI -s http://localhost:8080 install-plugin git-tag-message &&
+    java hudson.cli.CLI -s http://localhost:8080 install-plugin gitlab-logo &&
+    java hudson.cli.CLI -s http://localhost:8080 install-plugin gitlab-merge-request-jenkins &&
+    java hudson.cli.CLI -s http://localhost:8080 install-plugin git &&
+    cat /tmp/test.xml | java hudson.cli.CLI -s http://localhost:8080 create-job xxx &&    
     java hudson.cli.CLI -s http://localhost:8080 safe-restart &&
     true
