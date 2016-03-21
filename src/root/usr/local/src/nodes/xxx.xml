@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<slave>
+  <name>xxx</name>
+  <description></description>
+  <remoteFS>working</remoteFS>
+  <numExecutors>1</numExecutors>
+  <mode>NORMAL</mode>
+  <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+  <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.10">
+    <host>172.31.32.161</host>
+    <port>22</port>
+    <credentialsId>c6f30dcf-970a-4c8a-962e-0eb409dacc21</credentialsId>
+    <maxNumRetries>0</maxNumRetries>
+    <retryWaitTime>0</retryWaitTime>
+  </launcher>
+  <label>xxx</label>
+  <nodeProperties/>
+  <userId>anonymous</userId>
+</slave>

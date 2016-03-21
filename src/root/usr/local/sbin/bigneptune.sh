@@ -30,5 +30,6 @@ cd $(mktemp -d) &&
     java hudson.cli.CLI -s http://localhost:8080 install-plugin yet-another-docker-plugin &&
     cat /usr/local/src/jobs/test.xml | java hudson.cli.CLI -s http://localhost:8080 create-job xxx &&    
     cat /usr/local/src/jobs/mooncloudy.xml | java hudson.cli.CLI -s http://localhost:8080 create-job mooncloudy &&    
+    cat /usr/local/src/nodes/xxx.xml | sed -e "s#172.31.32.161#$(curl http://instance-data/latest/meta-data/local-ipv4)#" | java hudson.cli.CLI -s http://localhost:8080 create-node xxx &&    
     java hudson.cli.CLI -s http://localhost:8080 safe-restart &&
     true
