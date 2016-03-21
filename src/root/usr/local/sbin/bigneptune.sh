@@ -19,6 +19,15 @@ cd $(mktemp -d) &&
     java hudson.cli.CLI -s http://localhost:8080 install-plugin gitlab-logo &&
     java hudson.cli.CLI -s http://localhost:8080 install-plugin gitlab-merge-request-jenkins &&
     java hudson.cli.CLI -s http://localhost:8080 install-plugin git &&
-    cat /tmp/test.xml | java hudson.cli.CLI -s http://localhost:8080 create-job xxx &&    
+    java hudson.cli.CLI -s http://localhost:8080 install-plugin docker-build-step &&
+    java hudson.cli.CLI -s http://localhost:8080 install-plugin docker-plugin &&
+    java hudson.cli.CLI -s http://localhost:8080 install-plugin kubernetes &&
+    java hudson.cli.CLI -s http://localhost:8080 install-plugin docker-commons &&
+    java hudson.cli.CLI -s http://localhost:8080 install-plugin amazon-ecr &&
+    java hudson.cli.CLI -s http://localhost:8080 install-plugin amazon-ecs &&
+    java hudson.cli.CLI -s http://localhost:8080 install-plugin DotCi-DockerPublish &&
+    java hudson.cli.CLI -s http://localhost:8080 install-plugin google-container-registry-auth &&
+    java hudson.cli.CLI -s http://localhost:8080 install-plugin yet-another-docker-plugin &&
+    cat /usr/local/src/jobs/test.xml | java hudson.cli.CLI -s http://localhost:8080 create-job xxx &&    
     java hudson.cli.CLI -s http://localhost:8080 safe-restart &&
     true
