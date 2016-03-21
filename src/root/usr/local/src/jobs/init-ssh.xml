@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <org.jenkinsci.plugins.gitlablogo.GitlabLogoProperty plugin="gitlab-logo@1.0.1">
+      <repositoryName></repositoryName>
+    </org.jenkinsci.plugins.gitlablogo.GitlabLogoProperty>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.25">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>mkdir --parents ~/.ssh
+      chmod 0700 ~/.ssh</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>cat &gt; ~/.ssh/sAcTNbPO_id_rsa &lt;&lt;EOF
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEpQIBAAKCAQEA8cvnkJ99kx3D/sCR+p5Ez+NY4Njiby4krZDAIHaVpajhPwx9
+      TiQWQGRpUfw8yZTTk9WH/+MXHbJqL2C93w0hJT+bNm8L6pzIFVI+baC7DZXx5wkB
+      IadTyMVjVsvcTk11iybtek5rwxvX12slWRbUnyA3QaGNqWbqsmKNVrCsdnvbSTWK
+      p67z9k8J6vTNB/ooHAgmgDCn7PwhgxPPwvj8+02YcEg+ePEoyxnZ+O0l0Rijd42t
+      DpU1+jtXFFDqPEqnllgBxICYTSbOu0UDnU7iKXiXqIpkkzMNcOeL3+Rythl04agE
+      ehBYVim/dko4T3q1Q0kgqRcbVDZt1U/DipgA7wIDAQABAoIBAGlQ19aNMUPfxhty
+      wuJ3Bx/JNVASB2ZHoeAbWSOKoxmZmio9BWMAotR/J8R26f8fHJyad/cDcXEU4d0q
+      9OhvLo2ry64E5hrVGOz4eoqDZJXBRrDLojuHRx3+o4sNljJg2J64YN1RxOwhd3yz
+      hXvtTsTUYlzqweoUEouKE2e74hJkfUyslgqf+5AuzLe/qCoGjPXhNGChahkefncs
+      K09LHnElvo4OAMJlVX6rOXlaNQ/6G/n+7wfwjO/U4FU76bLZznvFY+uhEOoHJB2d
+      JWnXEqvsfRPz0yb2Og78T39pb4YUyETpCUe2HaR0Kmixv1k8CHAiCD4kIfHTh27T
+      Szqt/gkCgYEA/xxSnYR1EfKHTYwoFKG9ymcVd6+wTrmjzwC2X8BOB6mjCBnMaTNd
+      HXqGYOPomdVy3MV7ToebUhIjJIH1/PuHikX69BxRE6uB1OYgVXKMNGXImNNc19W9
+      RuXGPzX/6FIOdyaHrj62I/mhyFKU+lcLQpAmU2GNYaD85P/hP8/Z9iMCgYEA8qOz
+      Dlz9nT6Qa5aEL34BHNXVTzR2vu6f5ukeNzgR9iaSajTY/QroKKizeHeSvpACL5Z8
+      b+HNQ993/IcbUwAa7dbsyDKFjheWA/gN9FXJNknutfGEw/gAbyeNQWbmcUQWDgwL
+      ZOf/Wj9VAj5VXJRT6xayn4DzHG6z5UaWTnCpiMUCgYEAp/B2NnnHM7xr89HrZMGh
+      FkhMKpE+yGSPAKugY2JOO98hkyiglzSX/Nr28Xu3WOXaCpn6dZTx29JSziq7zAGt
+      lYpCDUdC3GcQPh4MdRPGVowWxPyHZxKu2qhSnLQotkCmgyubMEraTs58AUrUBgUd
+      RYFtqYBTuUxojzwfhYmIG+8CgYEArMTlNV//chzfZsxJGSwGjMqx1XEM8I0nLJtn
+      WXhCSdxTOu6gZyWCA5mEGU5DHg+ajtn/hwboSuDvJc/qI+KaSipUdYSL1o5y0iap
+      gQYofNCN+d2cZJHNdVhbW2tywMnzTlNDNbl/+HnKBQvvajlvu6Bw1eRStzcYPzRQ
+      yE+uV+UCgYEA8NlgwW+rkHAJV4Q+pDAD+V4guvoTD27ODx7l0VWDCIGmCTrANlFv
+      AdRHwglvrsEcHnETOaRkC4JkHHmc+psaF4e975trgWCyS0SRREIsK9HpfY/aBXDP
+      KkjgIi9mcZROhN4mOdMhC+TIVKpoFdJbAPzCsPU+OSzPM29Y29yqR4Y=
+      -----END RSA PRIVATE KEY-----
+      EOF</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>cat &gt; ~/.ssh/config &lt;&lt;EOF
+      Host xxx
+      HostName 52.207.217.15
+      User jenkins
+      IdentityFile ~/.ssh/sAcTNbPO_id_rsa
+      IdentitiesOnly yes
+      StrictHostKeyChecking no
+      RequestTTY force
+      EOF
+      </command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
