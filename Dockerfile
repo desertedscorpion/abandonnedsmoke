@@ -1,5 +1,5 @@
 FROM taf7lwappqystqp4u7wjsqkdc7dquw/grimdog_systemd
-RUN dnf install --assumeyes jenkins && dnf clean all && systemctl enable jenkins.service
+RUN dnf install --assumeyes jenkins git && dnf clean all && systemctl enable jenkins.service
 COPY src/root/usr/lib/systemd/system/bigneptune.service /usr/lib/systemd/system
 COPY src/root/usr/local/src/jobs /usr/local/src
 COPY src/root/usr/local/src/nodes /usr/local/src
