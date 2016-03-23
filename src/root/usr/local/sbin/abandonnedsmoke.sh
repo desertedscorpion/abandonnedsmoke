@@ -1,8 +1,6 @@
 #!/bin/bash
 
-vagrant plugin install vagrant-aws &&
-    vagrant box add dummy https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box &&
-    cd $(mktemp -d) &&
+cd $(mktemp -d) &&
     curl http://www.java2s.com/Code/JarDownload/localizer/localizer-1.9.jar.zip > localizer-1.9.jar.zip &&
     unzip localizer-1.9.jar.zip &&
     curl http://central.maven.org/maven2/commons-codec/commons-codec/1.9/commons-codec-1.9.jar > commons-code-1.9.jar &&

@@ -4,7 +4,7 @@ After=jenkins.service
 Requires=jenkins.service
 
 [Service]
-ExecStart=/usr/local/sbin/bigneptune.sh
+ExecStart=/usr/local/sbin/abandonnedsmoke.sh
 
 [Install]
 WantedBy=multi-user.target
