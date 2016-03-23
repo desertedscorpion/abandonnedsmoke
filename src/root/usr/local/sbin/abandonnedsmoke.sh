@@ -8,6 +8,7 @@ cd $(mktemp -d) &&
     cat /usr/local/src/private/id_rsa.pub > /home/slave/.ssh/authorized_keys &&
     chmod 0600 /home/slave/.ssh/authorized_keys &&
     chown --recursive slave:slave /home/slave/.ssh &&
+    rm /run/nologin &&
     curl http://www.java2s.com/Code/JarDownload/localizer/localizer-1.9.jar.zip > localizer-1.9.jar.zip &&
     unzip localizer-1.9.jar.zip &&
     curl http://central.maven.org/maven2/commons-codec/commons-codec/1.9/commons-codec-1.9.jar > commons-code-1.9.jar &&
