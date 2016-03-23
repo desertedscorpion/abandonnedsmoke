@@ -16,24 +16,28 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-	<name>origin</name>
-	<url>git@github.com:desertedscorpion/strawsound.git</url>
+        <name>origin</name>
+        <url>git@github.com:desertedscorpion/strawsound.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-	<name>*</name>
+        <name>*</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
     <submoduleCfg class="list"/>
   </scm>
-  <assignedNode>master</assignedNode>
+  <assignedNode>abandonnedsmoke</assignedNode>
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers/>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>H * * * *</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
@@ -47,10 +51,10 @@
       <pushOnlyIfSuccess>true</pushOnlyIfSuccess>
       <forcePush>false</forcePush>
       <branchesToPush>
-	<hudson.plugins.git.GitPublisher_-BranchToPush>
-	  <targetRepoName>origin</targetRepoName>
-	  <branchName>master</branchName>
-	</hudson.plugins.git.GitPublisher_-BranchToPush>
+        <hudson.plugins.git.GitPublisher_-BranchToPush>
+          <targetRepoName>origin</targetRepoName>
+          <branchName>master</branchName>
+        </hudson.plugins.git.GitPublisher_-BranchToPush>
       </branchesToPush>
     </hudson.plugins.git.GitPublisher>
   </publishers>

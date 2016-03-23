@@ -5,7 +5,6 @@
   <remoteFS>jenkins</remoteFS>
   <numExecutors>1</numExecutors>
   <mode>NORMAL</mode>
-  <retentionStrategy class="hudson.slaves.RetentionStrategy"/>
   <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.10">
     <host>127.0.0.1</host>
     <port>22</port>

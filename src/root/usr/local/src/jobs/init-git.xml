@@ -22,8 +22,9 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>mkdir --parents ~/.ssh
-      chmod 0700 ~/.ssh</command>
+      <command>git config --global user.name &quot;Emory Merryman&quot;
+git config --global user.email emory.merryman+OKBxrtcTVBOtYBE0@gmail.com
+</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>cat &gt; ~/.ssh/sAcTNbPO_id_rsa &lt;&lt;EOF

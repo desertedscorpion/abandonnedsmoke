@@ -13,7 +13,8 @@
     </com.sonyericsson.rebuild.RebuildSettings>
   </properties>
   <scm class="hudson.scm.NullSCM"/>
-  <canRoam>true</canRoam>
+  <assignedNode>abandonnedsmoke</assignedNode>
+  <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
@@ -21,12 +22,29 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cd $(mktemp -d) &amp;&amp;
+      <command>cd /tmp/tmp.prRPFe2IWy &amp;&amp;
       curl http://www.java2s.com/Code/JarDownload/localizer/localizer-1.9.jar.zip &gt; localizer-1.9.jar.zip &amp;&amp;
       unzip localizer-1.9.jar.zip &amp;&amp;
       curl http://central.maven.org/maven2/commons-codec/commons-codec/1.9/commons-codec-1.9.jar &gt; commons-code-1.9.jar &amp;&amp;
       export CLASSPATH=/usr/share/jenkins/webroot/WEB-INF/jenkins-cli.jar:/usr/share/jenkins/webroot/WEB-INF/remoting.jar:/usr/share/jenkins/webroot/WEB-INF/slave.jar:/usr/share/jenkins/webroot/WEB-INF/classes:localizer-1.9.jar:commons-code-1.9.jar:localizer-1.9.jar
-      java hudson.cli.CLI -s http://localhost:8080 get-job cli-x</command>
+      java hudson.cli.CLI -s http://localhost:8080 list-jobs | while read LINE
+      do
+      echo &gt;&gt; command.txt
+      echo &quot;cat &gt; src/root/usr/local/src/jobs/.xml &lt;&lt;EOF&quot; &gt;&gt; command.txt
+        java hudson.cli.CLI -s http://localhost:8080 get-job  &gt;&gt; command.txt
+        echo &gt;&gt; command.txt
+        echo &quot;EOF&quot; &gt;&gt; command.txt
+      done
+            for LINE in abandonnedsmoke
+      do
+      echo &gt;&gt; command.txt
+      echo &quot;cat &gt; src/root/usr/local/src/nodes/.xml &lt;&lt;EOF&quot; &gt;&gt; command.txt
+        java hudson.cli.CLI -s http://localhost:8080 get-node  &gt;&gt; command.txt
+        echo &gt;&gt; command.txt
+        echo &quot;EOF&quot; &gt;&gt; command.txt
+      done
+      
+      cat command.txt</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
