@@ -1,10 +1,11 @@
 #!/bin/bash
 
 cd $(mktemp -d) &&
-    ssh-keygen -f /usr/local/src/private/id_rsa -C "jenkins slave" -P "" &&
+    cp /usr/local/src/private/credentials.xml /var/lib/jenkins &&
+    chown jenkins:jenkins /var/lib/jenkins/credentials.xml &&
     mkdir /home/slave/.ssh &&
     chmod 0700 /home/slave.ssh &&
-    cat /usr/local/src/private/id_rsa.pub >> /home/slave/.ssh/authorized_keys &&
+    cat /usr/local/src/private/id_rsa.pub 
     chmod 0600 /home/slave/.ssh/authorized_keys &&
     chown --recursive slave:slave /home/slave/.ssh &&
     curl http://www.java2s.com/Code/JarDownload/localizer/localizer-1.9.jar.zip > localizer-1.9.jar.zip &&

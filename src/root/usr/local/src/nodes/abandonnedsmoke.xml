@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<slave>
+  <name>abandonnedsmoke</name>
+  <description></description>
+  <remoteFS>jenkins</remoteFS>
+  <numExecutors>1</numExecutors>
+  <mode>NORMAL</mode>
+  <retentionStrategy class="hudson.slaves.RetentionStrategy"/>
+  <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.10">
+    <host>127.0.0.1</host>
+    <port>22</port>
+    <credentialsId>b2446622-7ea2-4dc5-b713-afdd458a36e5</credentialsId>
+    <maxNumRetries>0</maxNumRetries>
+    <retryWaitTime>0</retryWaitTime>
+  </launcher>
+  <label>abandonnedsmoke</label>
+  <nodeProperties/>
+  <userId>anonymous</userId>
+</slave>
