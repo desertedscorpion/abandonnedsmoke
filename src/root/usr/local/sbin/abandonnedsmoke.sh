@@ -28,10 +28,16 @@ cd $(mktemp -d) &&
     java hudson.cli.CLI -s http://localhost:8080 install-plugin DotCi-DockerPublish &&
     java hudson.cli.CLI -s http://localhost:8080 install-plugin google-container-registry-auth &&
     java hudson.cli.CLI -s http://localhost:8080 install-plugin yet-another-docker-plugin &&
-    cat /usr/local/src/jobs/test.xml | java hudson.cli.CLI -s http://localhost:8080 create-job xxx &&    
-    cat /usr/local/src/jobs/mooncloudy.xml | java hudson.cli.CLI -s http://localhost:8080 create-job mooncloudy &&    
-    cat /usr/local/src/jobs/init-ssh.xml | java hudson.cli.CLI -s http://localhost:8080 create-job init-ssh &&    
-    cat /usr/local/src/jobs/cli-x.xml | java hudson.cli.CLI -s http://localhost:8080 create-job cli-x &&    
-    cat /usr/local/src/nodes/xxx.xml | sed -e "s#172.31.32.161#$(curl http://instance-data/latest/meta-data/local-ipv4)#" | java hudson.cli.CLI -s http://localhost:8080 create-node xxx &&    
+    for FILE in /usr/local/src/jobs/*.xml
+    do
+	cat ${FILE} | java hudson.cli.CLI -s http://localhost:8080 create-job $(basename ${FILE%.*}) &&
+	    true
+    done &&
+    for FILE in /usr/local/src/nodes/*.xml
+    do
+	cat ${FILE} | java hudson.cli.CLI -s http://localhost:8080 create-node $(basename ${FILE%.*}) &&
+	    true
+    done &&
     java hudson.cli.CLI -s http://localhost:8080 safe-restart &&
+    echo "ENJOY!!!!!!!!" &&
     true
