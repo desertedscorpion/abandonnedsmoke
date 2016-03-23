@@ -1,5 +1,6 @@
 FROM taf7lwappqystqp4u7wjsqkdc7dquw/grimdog_systemd
 RUN dnf install --assumeyes jenkins git vagrant  && dnf clean all && systemctl enable jenkins.service
+RUN adduser slave
 COPY src/root/usr/lib/systemd/system/abandonnedsmoke.service /usr/lib/systemd/system
 COPY src/root/usr/local/src /usr/local/src
 COPY src/root/usr/local/sbin/abandonnedsmoke.sh /usr/local/sbin
