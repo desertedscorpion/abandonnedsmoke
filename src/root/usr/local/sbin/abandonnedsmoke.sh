@@ -8,6 +8,15 @@ cd $(mktemp -d) &&
     cat /usr/local/src/private/id_rsa.pub > /home/slave/.ssh/authorized_keys &&
     chmod 0600 /home/slave/.ssh/authorized_keys &&
     chown --recursive slave:slave /home/slave/.ssh &&
+    (cat > /home/slave/.ssh/config <<EOF
+Host github.com
+User git
+StrictHostKeyChecking no
+IdentityFile /usr/local/src/private/lzoTamel_id_rsa
+EOF
+    ) &&
+    chmod 0600 /home/slave/.ssh/config &&
+    chown slave:slave /home/slave/.ssh/config &&
     rm /run/nologin &&
     curl http://www.java2s.com/Code/JarDownload/localizer/localizer-1.9.jar.zip > localizer-1.9.jar.zip &&
     unzip localizer-1.9.jar.zip &&
