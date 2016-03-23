@@ -22,11 +22,15 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cd /tmp/tmp.prRPFe2IWy &amp;&amp;
-      curl http://www.java2s.com/Code/JarDownload/localizer/localizer-1.9.jar.zip &gt; localizer-1.9.jar.zip &amp;&amp;
+      <command>if [ ! -f localizer-1.9.jar.zip ]
+then
+curl http://www.java2s.com/Code/JarDownload/localizer/localizer-1.9.jar.zip &gt; localizer-1.9.jar.zip &amp;&amp;
       unzip localizer-1.9.jar.zip &amp;&amp;
       curl http://central.maven.org/maven2/commons-codec/commons-codec/1.9/commons-codec-1.9.jar &gt; commons-code-1.9.jar &amp;&amp;
+      true
+fi
       export CLASSPATH=/usr/share/jenkins/webroot/WEB-INF/jenkins-cli.jar:/usr/share/jenkins/webroot/WEB-INF/remoting.jar:/usr/share/jenkins/webroot/WEB-INF/slave.jar:/usr/share/jenkins/webroot/WEB-INF/classes:localizer-1.9.jar:commons-code-1.9.jar:localizer-1.9.jar
+      echo &gt; command.txt
       java hudson.cli.CLI -s http://localhost:8080 list-jobs | while read LINE
       do
       echo &gt;&gt; command.txt
@@ -43,8 +47,9 @@
         echo &gt;&gt; command.txt
         echo &quot;EOF&quot; &gt;&gt; command.txt
       done
-      
-      cat command.txt</command>
+      echo BEFORE AAAAAAAAAAAAAAAAAAAAAAAAAAA
+      cat command.txt
+      echo AFTER AAAAAAAAAAAAAAAAAAAAAAAAAAAA</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
