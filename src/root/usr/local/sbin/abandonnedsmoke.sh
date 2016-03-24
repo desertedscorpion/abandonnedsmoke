@@ -7,6 +7,10 @@ cd $(mktemp -d) &&
     chmod 0700 /home/slave/.ssh &&
     cat /usr/local/src/private/id_rsa.pub > /home/slave/.ssh/authorized_keys &&
     chmod 0600 /home/slave/.ssh/authorized_keys &&
+    cat /usr/local/src/private/slave.config > /home/slave/.ssh/config &&
+    chmod 0600 /home/slave/.ssh/config &&
+    cat /usr/local/src/private/sAcTNbPO_id_rsa > /home/slave/.ssh/sAcTNbPO_id_rsa &&
+    chmod 0600 /home/slave/.ssh/sAcTNbPO_id_rsa &&
     chown --recursive slave:slave /home/slave/.ssh &&
     (cat > /home/slave/.ssh/config <<EOF
 Host github.com
@@ -47,6 +51,7 @@ EOF
     java hudson.cli.CLI -s http://localhost:8080 install-plugin yet-another-docker-plugin &&
     for FILE in /usr/local/src/jobs/*.xml
     do
+	sleep 1m &&
 	cat ${FILE} | java hudson.cli.CLI -s http://localhost:8080 create-job $(basename ${FILE%.*}) &&
 	    true
     done &&
@@ -56,10 +61,11 @@ EOF
 	    true
     done &&
     java hudson.cli.CLI -s http://localhost:8080 safe-restart &&
-    java hudson.cli.CLI -s http://localhost:8080 build init-ssh &&
-    java hudson.cli.CLI -s http://localhost:8080 build init-git &&
+    sleep 1m &&
     java hudson.cli.CLI -s http://localhost:8080 build init-vagrant-aws &&
+    sleep 1m &&
     java hudson.cli.CLI -s http://localhost:8080 build init-vagrant-scp &&
+    sleep 1m &&
     java hudson.cli.CLI -s http://localhost:8080 safe-restart &&
     echo "ENJOY!!!!!!!!" &&
     true
