@@ -62,6 +62,8 @@ EOF
     done &&
     java hudson.cli.CLI -s http://localhost:8080 safe-restart &&
     sleep 1m &&
+    java hudson.cli.CLI -s http://localhost:8080 build init-git &&
+    sleep 1m &&
     java hudson.cli.CLI -s http://localhost:8080 build init-vagrant-aws &&
     sleep 1m &&
     java hudson.cli.CLI -s http://localhost:8080 build init-vagrant-scp &&

@@ -1,11 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<project>
+<?xml version="1.0" encoding="UTF-8"?><project>
   <actions/>
-  <description></description>
+  <description/>
   <keepDependencies>false</keepDependencies>
   <properties>
     <org.jenkinsci.plugins.gitlablogo.GitlabLogoProperty plugin="gitlab-logo@1.0.1">
-      <repositoryName></repositoryName>
+      <repositoryName/>
     </org.jenkinsci.plugins.gitlablogo.GitlabLogoProperty>
     <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.25">
       <autoRebuild>false</autoRebuild>
@@ -26,7 +25,7 @@
 chmod 0700 ~/.ssh
 cat /usr/local/src/private/slave.config &gt; ~/.ssh/config
 chmod 0600 ~/.ssh/config
-git config --global user.name &quot;Emory Merryman&quot;
+git config --global user.name "Emory Merryman"
 git config --global user.email emory.merryman+xni9Rrlgj0xD8og2@gmail.com</command>
     </hudson.tasks.Shell>
   </builders>
