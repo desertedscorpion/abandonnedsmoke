@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "install": "./node_modules/.bin/webdriver-manager update --standalone",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "BSD",
   "devDependencies": {
-    "grunt": "~0.4.5"
+    "child-process-promise": "~1.1.0",
+    "xvfb": "~0.2.3"
   }
 }
