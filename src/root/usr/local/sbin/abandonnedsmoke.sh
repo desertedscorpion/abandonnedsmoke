@@ -9,8 +9,8 @@ cd $(mktemp -d) &&
     chmod 0600 /home/slave/.ssh/authorized_keys &&
     cat /usr/local/src/private/slave.config > /home/slave/.ssh/config &&
     chmod 0600 /home/slave/.ssh/config &&
-    cat /usr/local/src/private/sAcTNbPO_id_rsa > /home/slave/.ssh/sAcTNbPO_id_rsa &&
-    chmod 0600 /home/slave/.ssh/sAcTNbPO_id_rsa &&
+    cat /usr/local/src/private/lzoTamel_id_rsa > /home/slave/.ssh/lzoTamel_id_rsa &&
+    chmod 0600 /home/slave/.ssh/lzoTamel_id_rsa &&
     chown --recursive slave:slave /home/slave/.ssh &&
     (cat > /home/slave/.ssh/config <<EOF
 Host github.com
@@ -67,6 +67,12 @@ EOF
     java hudson.cli.CLI -s http://localhost:8080 build init-vagrant-aws &&
     sleep 1m &&
     java hudson.cli.CLI -s http://localhost:8080 build init-vagrant-scp &&
+    sleep 1m &&
+    java hudson.cli.CLI -s http://localhost:8080 safe-restart &&
+    sleep 1m &&
+    java hudson.cli.CLI -s http://localhost:8080 build test &&
+    sleep 1m &&
+    java hudson.cli.CLI -s http://localhost:8080 build desertedscorpion-strawsound &&
     sleep 1m &&
     java hudson.cli.CLI -s http://localhost:8080 safe-restart &&
     echo "ENJOY!!!!!!!!" &&
