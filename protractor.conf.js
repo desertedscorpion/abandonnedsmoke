@@ -1,4 +1,4 @@
-(function(xvfb, spawn){
+(function(xvfb, spawn,SpecReporter){
     "use strict";
     var recordmydesktop;
     exports.config = {
@@ -27,6 +27,9 @@
 	    spawn("recordmydesktop", ["--display", ":96.0", "--on-the-fly-encoding", "--no-sound","-o","protractor.ogv"]).progress(function(success){
 		recordmydesktop = success;
 	    });
+	},
+	onPrepare: function(){
+	    jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: true}));
 	},
 	afterLaunch: function(){
 	    spawn("kill", ["--signal", "SIGINT", recordmydesktop.pid]).then(function(success){
@@ -57,5 +60,6 @@
 	    "1280x1024x16"
 	]
     }),
-    require("child-process-promise").spawn
+    require("child-process-promise").spawn,
+    require("jasmine-spec-reporter")
 ));
