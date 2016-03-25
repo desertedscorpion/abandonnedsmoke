@@ -5,6 +5,7 @@
 	//	seleniumServerJar: "./node_modules/protractor/selenium/selenium-server-standalone-2.47.1.jar",
 	//	seleniumAddress: "http://localhost:4444/wd/hub",
 	directConnect: true,
+	//	chromeDriver: "node_modules/protractor/selenium/chromedriver",
 	specs: [
 	    'protractor.spec.js'
 	],
@@ -29,6 +30,9 @@
 	    });
 	},
 	onPrepare: function(){
+	    browser.manage().timeouts().setScriptTimeout(60000);
+	    browser.sleep(5000);
+	    browser.ignoreSynchronization=true;
 	    jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: true}));
 	},
 	afterLaunch: function(){
