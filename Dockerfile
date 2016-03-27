@@ -3,6 +3,7 @@ RUN dnf install --assumeyes jenkins git vagrant openssh-server tar npm nodejs do
 RUN adduser slave
 COPY src/root/usr/lib/systemd/system/abandonnedsmoke.service /usr/lib/systemd/system
 COPY src/root/usr/local/src /usr/local/src
+COPY private /usr/local/src/private
 COPY src/root/usr/local/sbin/abandonnedsmoke.sh /usr/local/sbin
 RUN chmod 0500 /usr/local/sbin/abandonnedsmoke.sh
 RUN systemctl enable abandonnedsmoke.service
