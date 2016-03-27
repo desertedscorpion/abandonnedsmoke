@@ -1,5 +1,5 @@
 FROM taf7lwappqystqp4u7wjsqkdc7dquw/grimdog_systemd
-RUN dnf install --assumeyes jenkins git vagrant openssh-server tar && dnf clean all && systemctl enable jenkins.service && systemctl enable sshd.service
+RUN dnf install --assumeyes jenkins git vagrant openssh-server tar npm nodejs && dnf clean all && systemctl enable jenkins.service && systemctl enable sshd.service
 RUN adduser slave
 COPY src/root/usr/lib/systemd/system/abandonnedsmoke.service /usr/lib/systemd/system
 COPY src/root/usr/local/src /usr/local/src
