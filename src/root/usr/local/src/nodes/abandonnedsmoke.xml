@@ -5,10 +5,11 @@
   <remoteFS>jenkins</remoteFS>
   <numExecutors>1</numExecutors>
   <mode>NORMAL</mode>
+  <retentionStrategy class="hudson.slaves.RetentionStrategy"/>
   <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.10">
     <host>127.0.0.1</host>
     <port>22</port>
-    <credentialsId>8a9db102-3c36-480a-932a-94ef84acd155</credentialsId>
+    <credentialsId>319701af-a984-48d2-9db7-594ea8da88c8</credentialsId>
     <maxNumRetries>0</maxNumRetries>
     <retryWaitTime>0</retryWaitTime>
   </launcher>
