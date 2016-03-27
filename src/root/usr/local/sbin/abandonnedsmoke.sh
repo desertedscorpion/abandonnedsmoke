@@ -24,6 +24,7 @@ cd $(mktemp -d) &&
 	sleep 1m &&
 	    true
     done &&
+    echo INSTALLING PLUGINS &&
     java hudson.cli.CLI -s http://localhost:8080 install-plugin greenballs &&
     java hudson.cli.CLI -s http://localhost:8080 install-plugin jobConfigHistory &&
     java hudson.cli.CLI -s http://localhost:8080 install-plugin ghprb &&
@@ -42,12 +43,17 @@ cd $(mktemp -d) &&
     java hudson.cli.CLI -s http://localhost:8080 install-plugin DotCi-DockerPublish &&
     java hudson.cli.CLI -s http://localhost:8080 install-plugin google-container-registry-auth &&
     java hudson.cli.CLI -s http://localhost:8080 install-plugin yet-another-docker-plugin &&
+    java hudson.cli.CLI -s http://localhost:8080 safe-restart &&
+    sleep 1m &&
+    java hudson.cli.CLI -s http://localhost:8080 safe-restart &&
+    echo INSTALLING JOBS &&
     for FILE in /usr/local/src/jobs/*.xml
     do
 	sleep 1m &&
 	cat ${FILE} | java hudson.cli.CLI -s http://localhost:8080 create-job $(basename ${FILE%.*}) &&
 	    true
     done &&
+    echo INSTALLING NODES &&
     for FILE in /usr/local/src/nodes/*.xml
     do
 	cat ${FILE} | java hudson.cli.CLI -s http://localhost:8080 create-node $(basename ${FILE%.*}) &&
@@ -55,6 +61,7 @@ cd $(mktemp -d) &&
     done &&
     java hudson.cli.CLI -s http://localhost:8080 safe-restart &&
     sleep 1m &&
+    echo RUNNING INIT JOBS &&
     java hudson.cli.CLI -s http://localhost:8080 build init-git &&
     sleep 1m &&
     java hudson.cli.CLI -s http://localhost:8080 build init-vagrant-aws &&
@@ -63,6 +70,7 @@ cd $(mktemp -d) &&
     sleep 1m &&
     java hudson.cli.CLI -s http://localhost:8080 safe-restart &&
     sleep 1m &&
+    RUNNING TEST JOBS &&
     java hudson.cli.CLI -s http://localhost:8080 build test &&
     sleep 1m &&
     java hudson.cli.CLI -s http://localhost:8080 build desertedscorpion-strawsound &&
