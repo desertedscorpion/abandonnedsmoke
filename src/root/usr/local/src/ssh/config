@@ -1,0 +1,5 @@
+Host github.com
+User git
+StrictHostKeyChecking no
+IdentityFile ~/.ssh/xSGyYmpH_id_rsa
+

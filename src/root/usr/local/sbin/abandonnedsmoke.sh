@@ -1,26 +1,21 @@
 #!/bin/bash
 
 cd $(mktemp -d) &&
-    cp /usr/local/src/private/credentials.xml /var/lib/jenkins &&
+    mkdir /var/lib/jenkins/.ssh &&
+    chmod 0700 /var/lib/jenkins/.ssh &&
+    ssh-keygen -f /var/lib/jenkins/.ssh/bLapOgpy_id_rsa -C "jenkins 2 slave" -P "" &&
+    chown --recursive jenkins:jenkins /var/lib/jenkins/.ssh &&
+    cp /usr/local/src/ssh/credentials.xml /var/lib/jenkins &&
     chown jenkins:jenkins /var/lib/jenkins/credentials.xml &&
     mkdir /home/slave/.ssh &&
     chmod 0700 /home/slave/.ssh &&
-    cat /usr/local/src/private/id_rsa.pub > /home/slave/.ssh/authorized_keys &&
+    cat /var/lib/jenkins/.ssh/bLapOgpy_id_rsa.pub > /home/slave/.ssh/authorized_keys &&
     chmod 0600 /home/slave/.ssh/authorized_keys &&
-    cat /usr/local/src/private/slave.config > /home/slave/.ssh/config &&
+    cat /usr/local/src/ssh/config > /home/slave/.ssh/config &&
     chmod 0600 /home/slave/.ssh/config &&
-    cat /usr/local/src/private/lzoTamel_id_rsa > /home/slave/.ssh/lzoTamel_id_rsa &&
-    chmod 0600 /home/slave/.ssh/lzoTamel_id_rsa &&
+    cat /usr/local/src/private/xSGyYmpH_id_rsa > /home/slave/.ssh/xSGyYmpH_id_rsa &&
+    chmod 0600 /home/slave/.ssh/xSGyYmpH_id_rsa &&
     chown --recursive slave:slave /home/slave/.ssh &&
-    (cat > /home/slave/.ssh/config <<EOF
-Host github.com
-User git
-StrictHostKeyChecking no
-IdentityFile /usr/local/src/private/lzoTamel_id_rsa
-EOF
-    ) &&
-    chmod 0600 /home/slave/.ssh/config &&
-    chown slave:slave /home/slave/.ssh/config &&
     rm /run/nologin &&
     curl http://www.java2s.com/Code/JarDownload/localizer/localizer-1.9.jar.zip > localizer-1.9.jar.zip &&
     unzip localizer-1.9.jar.zip &&
