@@ -34,16 +34,16 @@ fi
       java hudson.cli.CLI -s http://localhost:8080 list-jobs | while read LINE
       do
       echo &gt;&gt; command.txt
-      echo &quot;cat &gt; src/root/usr/local/src/jobs/.xml &lt;&lt;EOF&quot; &gt;&gt; command.txt
-        java hudson.cli.CLI -s http://localhost:8080 get-job   &gt;&gt; command.txt
+      echo &quot;cat &gt; src/root/usr/local/src/jobs/${LINE}.xml &lt;&lt;EOF&quot; &gt;&gt; command.txt
+        java hudson.cli.CLI -s http://localhost:8080 get-job ${LINE}  &gt;&gt; command.txt
         echo &gt;&gt; command.txt
         echo &quot;EOF&quot; &gt;&gt; command.txt
       done
             for LINE in abandonnedsmoke
       do
       echo &gt;&gt; command.txt
-      echo &quot;cat &gt; src/root/usr/local/src/nodes/.xml &lt;&lt;EOF&quot; &gt;&gt; command.txt
-        java hudson.cli.CLI -s http://localhost:8080 get-node  &gt;&gt; command.txt
+      echo &quot;cat &gt; src/root/usr/local/src/nodes/${LINE}.xml &lt;&lt;EOF&quot; &gt;&gt; command.txt
+        java hudson.cli.CLI -s http://localhost:8080 get-node ${LINE} &gt;&gt; command.txt
         echo &gt;&gt; command.txt
         echo &quot;EOF&quot; &gt;&gt; command.txt
       done
