@@ -35,7 +35,7 @@ fi
       do
       echo &gt;&gt; command.txt
       echo &quot;cat &gt; src/root/usr/local/src/jobs/.xml &lt;&lt;EOF&quot; &gt;&gt; command.txt
-        java hudson.cli.CLI -s http://localhost:8080 get-job  &gt;&gt; command.txt
+        java hudson.cli.CLI -s http://localhost:8080 get-job   &gt;&gt; command.txt
         echo &gt;&gt; command.txt
         echo &quot;EOF&quot; &gt;&gt; command.txt
       done
