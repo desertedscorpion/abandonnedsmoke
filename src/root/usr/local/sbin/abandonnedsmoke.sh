@@ -1,15 +1,13 @@
 #!/bin/bash
 
 cd $(mktemp -d) &&
-    mkdir /var/lib/jenkins/.ssh &&
-    chmod 0700 /var/lib/jenkins/.ssh &&
-    ssh-keygen -f /var/lib/jenkins/.ssh/bLapOgpy_id_rsa -C "jenkins 2 slave" -P "" &&
-    chown --recursive jenkins:jenkins /var/lib/jenkins/.ssh &&
+    ssh-keygen -f /usr/local/src/ssh/bLapOgpy_id_rsa -C "jenkins 2 slave" -P "" &&
+    chown jenkins:jenkins /usr/local/src/ssh/bLapOgpy_id_rsa &&
     cp /usr/local/src/ssh/credentials.xml /var/lib/jenkins &&
     chown jenkins:jenkins /var/lib/jenkins/credentials.xml &&
     mkdir /home/slave/.ssh &&
     chmod 0700 /home/slave/.ssh &&
-    cat /var/lib/jenkins/.ssh/bLapOgpy_id_rsa.pub > /home/slave/.ssh/authorized_keys &&
+    cat /usr/local/src/ssh/bLapOgpy_id_rsa.pub > /home/slave/.ssh/authorized_keys &&
     chmod 0600 /home/slave/.ssh/authorized_keys &&
     cat /usr/local/src/ssh/config > /home/slave/.ssh/config &&
     chmod 0600 /home/slave/.ssh/config &&
