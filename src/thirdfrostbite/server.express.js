@@ -23,7 +23,12 @@
 		    status: true,
 		    stdout: success.stdout,
 		    stderr: success.stderr
-		})
+		});
+	    }, function(rageguy){
+		return response.json({
+		    status: false,
+		    error: JSON.stringify(rageguy)
+		});
 	    });
 	})
 	.listen(29615)
