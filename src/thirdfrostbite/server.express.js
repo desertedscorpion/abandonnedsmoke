@@ -17,7 +17,8 @@
 		    "/usr/share/jenkins/webroot/WEB-INF/slave.jar",
 		    "/usr/share/jenkins/webroot/WEB-INF/classes:localizer-1.9.jar"
 		].join(":"),
-		"hudson.cli.CLI"
+		"hudson.cli.CLI",
+		"help"
 	    ]).then(function(success){
 		return response.json({
 		    status: true,
