@@ -1,0 +1,20 @@
+{
+  "name": "abandonnedleather",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Emory Merryman <emory.merryman+ZimkAJ0FblRBcDOa@gmail.com>"
+  ],
+  "license": "BSD",
+  "homepage": "https://github.com/desertedscorpion/abandonnedsmoke",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.3"
+  }
+}

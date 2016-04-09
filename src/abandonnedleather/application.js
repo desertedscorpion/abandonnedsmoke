@@ -1,0 +1,6 @@
+(function(){
+    "use strict";
+    return angular.module("application")
+	.directive("application", 
+    ;
+}());
