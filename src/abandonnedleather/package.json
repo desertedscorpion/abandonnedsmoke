@@ -1,14 +1,14 @@
 {
-  "name": "abandonnedleather",
-  "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "BSD",
-  "devDependencies": {
-    "bower": "~1.7.9"
-  }
+    "name": "abandonnedleather",
+    "version": "0.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+	"install": "./node_modules/.bin/bower install"
+    },
+    "author": "",
+    "license": "BSD",
+    "devDependencies": {
+	"bower": "~1.7.9"
+    }
 }

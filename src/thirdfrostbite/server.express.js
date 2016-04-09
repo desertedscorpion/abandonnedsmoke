@@ -1,6 +1,7 @@
 (function(express, spawn){
     "use strict";
     return express()
+	.use("/", express.static("../abandonnedleather"))
 	.get("/rest/api/0.0.0/status/health", function(request, response){
 	    return response.json({
 		status: true
