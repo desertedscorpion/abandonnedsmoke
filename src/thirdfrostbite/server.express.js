@@ -25,7 +25,7 @@
 	    ]).then(function(success){
 		return response.json({
 		    status: true,
-		    response: success
+		    response: JSON.stringify(success)
 		});
 	    }, function(rageguy){
 		return response.json({
