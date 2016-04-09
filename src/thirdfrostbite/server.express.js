@@ -18,15 +18,16 @@
 		    "/usr/share/jenkins/webroot/WEB-INF/classes:localizer-1.9.jar"
 		].join(":"),
 		"hudson.cli.CLI"
-				 ]).then(function(success){
-				     return response.json({
-					 status: true,
-					 stdout: success.stdout,
-					 stderr: success.stderr
-				     })
-				 });
+	    ]).then(function(success){
+		return response.json({
+		    status: true,
+		    stdout: success.stdout,
+		    stderr: success.stderr
+		})
+	    });
 	})
 	.listen(29615)
+    ;
 }(
     require("express"),
 ));
