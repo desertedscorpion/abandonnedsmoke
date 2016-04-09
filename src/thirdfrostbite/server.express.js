@@ -18,6 +18,8 @@
 		    "/usr/share/jenkins/webroot/WEB-INF/classes:localizer-1.9.jar"
 		].join(":"),
 		"hudson.cli.CLI",
+		"-s",
+		"http://localhost:8080",
 		"help"
 	    ]).then(function(success){
 		return response.json({
