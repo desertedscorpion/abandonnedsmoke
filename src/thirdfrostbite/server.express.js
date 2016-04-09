@@ -6,7 +6,7 @@
 		status: true
 	    });
 	})
-	.post("/rest/api/0.0.0/jenkins-cli/help", function(request, response){
+	.get("/rest/api/0.0.0/jenkins-cli/help", function(request, response){
 	    return spawn("java", [
 		"-classpath",
 		[
