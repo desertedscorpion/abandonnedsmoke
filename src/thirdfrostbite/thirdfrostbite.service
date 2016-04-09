@@ -1,0 +1,10 @@
+[Unit]
+Description=thirdfrostbite jenkins client service
+After=jenkins.service
+Requires=jenkins.service
+
+[Service]
+ExecStart=/usr/bin/node /opt/thirdfrostbite/server.express.js
+
+[Install]
+WantedBy=multi-user.target

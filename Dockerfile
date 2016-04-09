@@ -4,7 +4,9 @@ RUN dnf install --assumeyes npm nodejs
 RUN mkdir /opt/thirdfrostbite
 COPY src/thirdfrostbite/package.json /opt/thirdfrostbite
 COPY src/thirdfrostbite/server.express.js /opt/thirdfrostbite
-RUN cd /opt/thirdfrostbite && npm install --production && npm start
+COPY src/thirdfrostbite/thirdfrostbite.service /usr/lib/systemd/system
+RUN cd /opt/thirdfrostbite && npm install
+RUN systemctl enable thirdfrostbite.service
 EXPOSE 8080
 EXPOSE 29615
 CMD ["/usr/sbin/init"]
