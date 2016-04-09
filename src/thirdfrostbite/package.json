@@ -1,17 +1,17 @@
 {
-  "name": "thirdfrostbite",
-  "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "BSD",
-  "dependencies": {
-    "express": "~4.13.4",
-    "child-process-promise": "~1.1.0",
-    "promise-temp": "~0.1.0",
-    "q": "~1.4.1"
-  }
+    "name": "thirdfrostbite",
+    "version": "0.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+	"start": "node server.express.js"
+    },
+    "author": "",
+    "license": "BSD",
+    "dependencies": {
+	"express": "~4.13.4",
+	"child-process-promise": "~1.1.0",
+	"promise-temp": "~0.1.0",
+	"q": "~1.4.1"
+    }
 }
