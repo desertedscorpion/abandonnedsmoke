@@ -30,4 +30,5 @@
     ;
 }(
     require("express"),
+    require("child-process-promise").spawn
 ));
