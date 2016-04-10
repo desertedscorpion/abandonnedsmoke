@@ -1,7 +1,7 @@
-(function(express, spawn){
+(function(express, spawn, join){
     "use strict";
     return express()
-	.use("/", express.static("../abandonnedleather"))
+	.use("/", express.static(join(__dirname,"..","client")))
 	.get("/rest/api/0.0.0/status/health", function(request, response){
 	    return response.json({
 		status: true
@@ -39,5 +39,6 @@
     ;
 }(
     require("express"),
-    require("child-process-promise").exec
+    require("child-process-promise").exec,
+    require("path").join
 ));
