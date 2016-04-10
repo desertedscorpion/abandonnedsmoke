@@ -15,7 +15,7 @@ RUN cd /opt/thirdfrostbite/client && npm install && ./node_modules/.bin/bower in
 RUN mkdir /opt/thirdfrostbite/server
 COPY src/thirdfrostbite/server/package.json /opt/thirdfrostbite/server
 COPY src/thirdfrostbite/server/server.express.js /opt/thirdfrostbite/server
-RUN cd /opt/thirdfrostbite/server && npm install && curl -o /opt/thirdfrostbite/localizer-1.9.jar.zip http://www.java2s.com/Code/JarDownload/localizer/localizer-1.9.jar.zip && unzip -d /opt/thirdfrostbite /opt/thirdfrostbite/localizer-1.9.jar.zip && curl -o commons-codec-1.9.jar http://central.maven.org/maven2/commons-codec/commons-codec/1.9/commons-codec-1.9.jar
+RUN cd /opt/thirdfrostbite/server && npm install && curl -o /opt/thirdfrostbite/localizer-1.9.jar.zip http://www.java2s.com/Code/JarDownload/localizer/localizer-1.9.jar.zip && unzip -d /opt/thirdfrostbite /opt/thirdfrostbite/localizer-1.9.jar.zip && curl -o /opt/thirdfrostbite/commons-codec-1.9.jar http://central.maven.org/maven2/commons-codec/commons-codec/1.9/commons-codec-1.9.jar
 EXPOSE 8080
 EXPOSE 29615
 CMD ["/usr/sbin/init"]
