@@ -12,8 +12,7 @@ COPY src/thirdfrostbite/client/bower.json /opt/thirdfrostbite/client
 COPY src/thirdfrostbite/client/index.html /opt/thirdfrostbite/client
 COPY src/thirdfrostbite/client/package.json /opt/thirdfrostbite/client
 RUN chown --recursive slave:slave /opt/thirdfrostbite/client
-RUN cd /opt/thirdfrostbite/client && npm install
-RUN su --login slave "cd /opt/thirdfrostbite/client && ./node_modules/.bin/bower install"
+RUN su --login slave "cd /opt/thirdfrostbite/client && npm install && ./node_modules/.bin/bower install"
 RUN mkdir /opt/thirdfrostbite/server
 COPY src/thirdfrostbite/server/package.json /opt/thirdfrostbite/server
 COPY src/thirdfrostbite/server/server.express.js /opt/thirdfrostbite/server
