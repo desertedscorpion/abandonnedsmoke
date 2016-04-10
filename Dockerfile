@@ -3,17 +3,17 @@ RUN dnf install --assumeyes jenkins && dnf clean all && systemctl enable jenkins
 RUN dnf install --assumeyes npm nodejs curl git
 RUN mkdir /opt/thirdfrostbite
 RUN useradd slave
-RUN chown slave:slave /opt/thirdfrostbite
 COPY src/thirdfrostbite/thirdfrostbite.service /usr/lib/systemd/system
 RUN systemctl enable thirdfrostbite.service
-USER slave
 RUN mkdir /opt/thirdfrostbite/client
 COPY src/thirdfrostbite/client/application.html /opt/thirdfrostbite/client
 COPY src/thirdfrostbite/client/application.js /opt/thirdfrostbite/client
 COPY src/thirdfrostbite/client/bower.json /opt/thirdfrostbite/client
 COPY src/thirdfrostbite/client/index.html /opt/thirdfrostbite/client
 COPY src/thirdfrostbite/client/package.json /opt/thirdfrostbite/client
-RUN cd /opt/thirdfrostbite/client && npm install && ./node_modules/.bin/bower install
+RUN chown --recursive slave:slave /opt/thirdfrostbite/client
+RUN cd /opt/thirdfrostbite/client && npm install
+RUN su --login slave "cd /opt/thirdfrostbite/client && ./node_modules/.bin/bower install"
 RUN mkdir /opt/thirdfrostbite/server
 COPY src/thirdfrostbite/server/package.json /opt/thirdfrostbite/server
 COPY src/thirdfrostbite/server/server.express.js /opt/thirdfrostbite/server
