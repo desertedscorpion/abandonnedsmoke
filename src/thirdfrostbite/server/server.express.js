@@ -23,7 +23,7 @@
 		"-s",
 		"http://localhost:8080",
 		"help"
-	    ].join(" ").then(function(success){
+	    ].join(" ")).then(function(success){
 		return response.json({
 		    status: true,
 		    stdout: success.stdout
