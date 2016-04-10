@@ -21,7 +21,7 @@
 		return $resource("rest/api/0.0.0/status/health").get().$promise;
 	    };
 	    this.genericHelp = function(){
-		return $resource("rest/api/0.0.0/jenkins-cli/help").get().$promise;
+		return $resource("rest/api/0.0.0/jenkins-cli/genericHelp").get().$promise;
 	    };
 	}])
     ;

@@ -7,7 +7,7 @@
 		status: true
 	    });
 	})
-	.get("/rest/api/0.0.0/jenkins-cli/help", function(request, response){
+	.get("/rest/api/0.0.0/jenkins-cli/genericHelp", function(request, response){
 	    return spawn([
 		"java",
 		"-classpath",
@@ -28,7 +28,7 @@
 		    status: true,
 		    response: success.stderr.split("\n").map(function(line, index, array){
 			if(0 === index % 2){
-			    return [line, array[index+1]];
+			    return [line.trim(), array[index+1].trim()];
 			}
 		    }).filter(function(line, index, array){
 			return 0 === index % 2;
