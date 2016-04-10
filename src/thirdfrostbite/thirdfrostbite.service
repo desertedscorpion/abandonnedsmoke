@@ -4,7 +4,7 @@ After=jenkins.service
 Requires=jenkins.service
 
 [Service]
-ExecStart=/usr/bin/node /opt/thirdfrostbite/server.express.js
+ExecStart=/usr/bin/node /opt/thirdfrostbite/server/server.express.js
 
 [Install]
 WantedBy=multi-user.target

@@ -8,7 +8,8 @@
 	    });
 	})
 	.get("/rest/api/0.0.0/jenkins-cli/help", function(request, response){
-	    return spawn("java", [
+	    return spawn([
+		"java",
 		"-classpath",
 		[
 		    "/opt/thirdfrostbite/localizer-1.9.jar",
@@ -22,10 +23,10 @@
 		"-s",
 		"http://localhost:8080",
 		"help"
-	    ]).then(function(success){
+	    ].join(" ").then(function(success){
 		return response.json({
 		    status: true,
-		    response: JSON.stringify(success)
+		    stdout: success.stdout
 		});
 	    }, function(rageguy){
 		return response.json({
@@ -38,5 +39,5 @@
     ;
 }(
     require("express"),
-    require("child-process-promise").spawn
+    require("child-process-promise").exec
 ));
