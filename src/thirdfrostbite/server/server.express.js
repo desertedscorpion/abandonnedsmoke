@@ -26,7 +26,13 @@
 	    ].join(" ")).then(function(success){
 		return response.json({
 		    status: true,
-		    response: success
+		    response: success.stderr.split("\n").map(function(line, index, array){
+			if(0 === index % 2){
+			    return [line, array[index+1]];
+			}
+		    }).filter(function(line, index, array){
+			return 0 === index % 2;
+		    });
 		});
 	    }, function(rageguy){
 		return response.json({
