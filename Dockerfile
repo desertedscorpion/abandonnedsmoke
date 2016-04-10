@@ -2,6 +2,9 @@ FROM taf7lwappqystqp4u7wjsqkdc7dquw/grimdog_systemd
 RUN dnf install --assumeyes jenkins && dnf clean all && systemctl enable jenkins.service
 RUN dnf install --assumeyes npm nodejs curl
 RUN mkdir /opt/thirdfrostbite
+RUN useradd slave
+RUN chown slave:slave /opt/thirdfrostbite
+USER slave
 COPY src/thirdfrostbite/thirdfrostbite.service /usr/lib/systemd/system
 RUN mkdir /opt/thirdfrostbite/client
 COPY src/thirdfrostbite/client/application.html /opt/thirdfrostbite/client
