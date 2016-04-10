@@ -32,7 +32,7 @@
 			}
 		    }).filter(function(line, index, array){
 			return 0 === index % 2;
-		    });
+		    })
 		});
 	    }, function(rageguy){
 		return response.json({
